@@ -412,6 +412,7 @@
     this.executes = [];
     tx = this;
     handlerFor = function(index, didSucceed) {
+      txLocks[tx.db.dbname].inProgress = false;
       return function(response) {
         var err;
         if (!txFailure) {
